@@ -3,7 +3,9 @@ export default class Game {
     this.element = element;
     this.width = width;
     this.height = height;
-
+    let svg = document.createElementNS(SVG_NS, 'svg');
+    this.gameElement = document.getElementById(this.element);
+    this.gameElement.appendChild(svg);
 		// Other code goes here...
   }
 

@@ -9,8 +9,8 @@ export const paddleWidth = 8,
 export const keys = {
     p1up:'w',
     p1down:'s',
-    p2up:'arrowUp',
-    p2down:'arrowDown',
+    p2up:'ArrowUp',
+    p2down:'ArrowDown',
     pause: ' ',
 
 };

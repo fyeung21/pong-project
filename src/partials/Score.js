@@ -1,18 +1,18 @@
-// import {SVG_NS} from '../settings';
-// import { reject } from 'q';
+import {SVG_NS, text_size} from '../settings';
 
-// export default class Score {
-//     constructor(width, height) {
-//         this.width = width;
-//         this.height = height;
-//     }
-//     render(svg) {
-//         let rect = document.createElementNS(SVG_NS, 'rect');
-//         rect.setAttributeNS(null, "width", this.width);
-//         rect.setAttributeNS(null, "height", this.height);
-//         rect.setAttributeNS(null, "fill", "#353535");
-//         rect.setAttributeNS(null, "x", 0);
-//         tect.setAttributeNS(null, "y", 0);
-//         svg.appendChild(rect);
-//     }
-// }
+export default class Score {
+    constructor(xPosition, yPosition) {
+        this.x = xPosition;
+        this.y = yPosition;
+    }
+    render(svg, score) {
+        let text = document.createElementNS(SVG_NS, 'text');
+        text.setAttributeNS(null, "fill", "white");
+        text.setAttributeNS(null, "font-size", text_size);
+        text.setAttributeNS(null, "font-family", "'Silkscreen Web', monotype");
+        text.setAttributeNS(null, "x", this.x);
+        text.setAttributeNS(null, "y", this.y);
+        text.textContent = score;
+        svg.appendChild(line);
+    }
+}

@@ -4,7 +4,8 @@ export const paddleWidth = 8,
             paddleHeight = 56, 
             boardGap = 10, 
             SPEED = 10,
-            radius = 8;
+            radius = 8,
+            text_size = 30;
 
 export const keys = {
     p1up:'w',

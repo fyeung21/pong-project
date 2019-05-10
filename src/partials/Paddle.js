@@ -25,7 +25,10 @@ export default class Paddle {
     increaseScore() {
         this.score++;
     }
-
+    
+    getScore() {
+        return this.score;
+    }
     // resetScore() {
     //     this.reset();
     // }

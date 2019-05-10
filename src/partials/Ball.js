@@ -7,6 +7,7 @@ export default class Ball {
         this.boardHeight = boardHeight;
         this.radius = radius;
         this.direction = 1;
+        this.ping = new Audio("public/sounds/pong-01.wav");
         this.reset();
     }
 
@@ -30,7 +31,7 @@ export default class Ball {
         }
        
     }
-    
+
     goalCollision(player1, player2) {
         if (this.x <= 0) {
             player2.increaseScore();
@@ -75,6 +76,7 @@ export default class Ball {
         this.y = this.y + this.vy;
         this.wallCollision();
         this.paddleCollision(player1,player2);
+        this.goalCollision(player1, player2);
         svg.appendChild(circle);
         
     }

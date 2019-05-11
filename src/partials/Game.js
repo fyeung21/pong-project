@@ -28,7 +28,8 @@ export default class Game {
     document.addEventListener("keydown", (event) => {
       if(event.key === keys.pause) {
         this.paused = !this.paused;
-      }
+    
+    }
     })
   }
 
@@ -50,6 +51,8 @@ export default class Game {
     this.ball.render(svg, this.paddle1, this.paddle2);
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
+
+
   }
 
 }

@@ -1,4 +1,6 @@
 import {SVG_NS} from '../settings';
+import audioFile from '../../public/sounds/meowp1.wav';
+import audioFile2 from '../../public/sounds/meowp2.wav';
 import { reject } from 'q';
 
 export default class Ball {
@@ -7,7 +9,8 @@ export default class Ball {
         this.boardHeight = boardHeight;
         this.radius = radius;
         this.direction = 1;
-        this.ping = new Audio("public/sounds/pong-01.wav");
+        this.ping = new Audio(audioFile);
+        this.ping2 = new Audio(audioFile2)
         this.reset();
     }
 
@@ -17,9 +20,9 @@ export default class Ball {
         this.vx = 0;
         this.vy = 0;
         while(this.vy === 0){
-            this.vy = Math.floor(Math.random() * 10 - 5);
+            this.vy = Math.floor(Math.random() * 6 - 3);
         }
-        this.vx = this.direction * (6 - Math.abs(this.vy));
+        this.vx = this.direction * (4 - Math.abs(this.vy));
 
     }
 
@@ -48,18 +51,23 @@ export default class Ball {
         if(this.vx > 0) {
             const p2 = player2.getCoordinates();
             // check for hit with player2
-            if(this.x + this.radius >= p2.left && 
+            if(this.x + this.radius >= p2.left &&
+                this.x + this.radius <= p2.right && 
                 this.y >= p2.top &&
                 this.y <= p2.bottom ) {
                     this.vx = this.vx * -1;
+                    this.ping2.play ();
+            
                 }
         } else {
             const p1 = player1.getCoordinates();
             // check for hit with player1
-            if(this.x + this.radius >= p1.right && 
+            if(this.x - this.radius >= p1.left && 
+                this.x - this.radius <= p1.right &&
                 this.y >= p1.top &&
                 this.y <= p1.bottom ) {
                     this.vx = this.vx * -1;
+                    this.ping.play ();
         
         }
     }

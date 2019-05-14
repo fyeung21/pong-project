@@ -1,4 +1,4 @@
-import {SVG_NS} from '../settings';
+import {SVG_NS, keys} from '../settings';
 import audioFile from '../../public/sounds/meowp1.wav';
 import audioFile2 from '../../public/sounds/meowp2.wav';
 import { reject } from 'q';
@@ -10,7 +10,7 @@ export default class Ball {
         this.radius = radius;
         this.direction = 1;
         this.ping = new Audio(audioFile);
-        this.ping2 = new Audio(audioFile2)
+        this.ping2 = new Audio(audioFile2);
         this.reset();
     }
 
@@ -19,11 +19,17 @@ export default class Ball {
         this.y = this.boardHeight/2;
         this.vx = 0;
         this.vy = 0;
-        while(this.vy === 0){
+        if(document.addEventListener('keydown', (event) => {
+            if(event.key === keys.begin) {
+                // for (this.vy === 0; this.vy === 0){
+                //     this.vy = Math.floor(Math.random() * 6 - 3);
+                // }
+              while(this.vy === 0){
             this.vy = Math.floor(Math.random() * 6 - 3);
         }
-        this.vx = this.direction * (4 - Math.abs(this.vy));
-
+        this.vx = this.direction * (4 - Math.abs(this.vy));  
+            }
+        }));
     }
 
     wallCollision() {
@@ -85,6 +91,7 @@ export default class Ball {
         this.wallCollision();
         this.paddleCollision(player1,player2);
         this.goalCollision(player1, player2);
+        // this.ball2.circle.setAttributeNS(null, "fill", "lightblue");
         svg.appendChild(circle);
         
     }

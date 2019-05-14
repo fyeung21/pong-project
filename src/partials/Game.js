@@ -1,5 +1,5 @@
 
-import {SVG_NS, SPEED, paddleWidth, paddleHeight, boardGap, keys, radius} from '../settings';
+import {SVG_NS, SPEED, paddleWidth, paddleHeight, boardGap, keys, radius, radius2} from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
@@ -21,16 +21,19 @@ export default class Game {
     this.paddle2 = new Paddle(this.height, paddleWidth, paddleHeight, paddle2Gap, boardMid, keys.p2up, keys.p2down);
   
     this.ball = new Ball(this.width, this.height, radius);
+    this.ball2 = new Ball(this.width, this.height, radius2);
     
     this.score1 = new Score(this.width/2 - 50, 30);
     this.score2 = new Score(this.width/2 + 25, 30);
+
+    // this.alert = new Winner (win);
     
     document.addEventListener("keydown", (event) => {
       if(event.key === keys.pause) {
         this.paused = !this.paused;
     
     }
-    })
+  })
   }
 
   render() {
@@ -49,8 +52,17 @@ export default class Game {
     this.paddle1.render(svg);
     this.paddle2.render(svg);
     this.ball.render(svg, this.paddle1, this.paddle2);
+    if (this.paddle1.getScore() >= 3 && this.paddle2.getScore() >= 3){
+      this.ball2.render(svg, this.paddle1, this.paddle2);
+    }
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
+
+    if (this.paddle1.getScore() === 20 || this.paddle2.getScore() === 20) {
+      this.alert.render(svg);
+      
+      return;
+    }
 
 
   }

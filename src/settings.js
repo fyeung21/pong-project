@@ -5,7 +5,9 @@ export const paddleWidth = 8,
             boardGap = 10, 
             SPEED = 10,
             radius = 8,
+            radius2 = 10,
             text_size = 30;
+            
 
 export const keys = {
     p1up:'w',
@@ -13,5 +15,6 @@ export const keys = {
     p2up:'ArrowUp',
     p2down:'ArrowDown',
     pause: ' ',
+    begin: 'b',
 
 };

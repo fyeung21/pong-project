@@ -1,5 +1,4 @@
 import {SVG_NS} from '../settings';
-import { reject } from 'q';
 
 export default class Board {
     constructor(width, height) {

@@ -1,9 +1,10 @@
 
-import {SVG_NS, SPEED, paddleWidth, paddleHeight, boardGap, keys, radius, radius2} from '../settings';
+import {SVG_NS, paddleWidth, paddleHeight, boardGap, keys, radius, radius2} from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
+import Endgame from './Endgame';
 
 export default class Game {
   constructor(element, width, height) {
@@ -20,20 +21,25 @@ export default class Game {
     const paddle2Gap = this.width - boardGap - paddleWidth;
     this.paddle2 = new Paddle(this.height, paddleWidth, paddleHeight, paddle2Gap, boardMid, keys.p2up, keys.p2down);
   
-    this.ball = new Ball(this.width, this.height, radius);
-    this.ball2 = new Ball(this.width, this.height, radius2);
+    this.ball = new Ball(this.width, this.height, radius, "#FFF");
+    this.ball2 = new Ball(this.width, this.height, radius2, "#FFF");
     
     this.score1 = new Score(this.width/2 - 50, 30);
     this.score2 = new Score(this.width/2 + 25, 30);
 
-    // this.alert = new Winner (win);
+    this.Endgame = new Endgame(163, 220);
+
     
     document.addEventListener("keydown", (event) => {
       if(event.key === keys.pause) {
         this.paused = !this.paused;
+      }
+
+      // if(event.key === keys.begin) {
+      //   this.paused = !this.paused;
+      // }
+    });
     
-    }
-  })
   }
 
   render() {
@@ -58,12 +64,12 @@ export default class Game {
     this.score1.render(svg, this.paddle1.getScore());
     this.score2.render(svg, this.paddle2.getScore());
 
-    if (this.paddle1.getScore() === 20 || this.paddle2.getScore() === 20) {
-      this.alert.render(svg);
-      
-      return;
+    if (this.paddle1.getScore() >= 6 || this.paddle2.getScore() >= 6) {
+      this.pause = true;
+      this.Endgame.render(svg);
     }
 
+    
 
   }
 

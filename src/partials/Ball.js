@@ -4,7 +4,7 @@ import audioFile2 from '../../public/sounds/meowp2.wav';
 import { reject } from 'q';
 
 export default class Ball {
-    constructor(boardWidth, boardHeight, radius) {
+    constructor(boardWidth, boardHeight, radius, color) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.radius = radius;
@@ -12,6 +12,7 @@ export default class Ball {
         this.ping = new Audio(audioFile);
         this.ping2 = new Audio(audioFile2);
         this.reset();
+        this.color = color;
     }
 
     reset() {
@@ -19,17 +20,15 @@ export default class Ball {
         this.y = this.boardHeight/2;
         this.vx = 0;
         this.vy = 0;
-        if(document.addEventListener('keydown', (event) => {
-            if(event.key === keys.begin) {
-                // for (this.vy === 0; this.vy === 0){
-                //     this.vy = Math.floor(Math.random() * 6 - 3);
-                // }
-              while(this.vy === 0){
+        document.addEventListener('keydown', (event) => {
+            if(event.key === keys.begin){
+        
+            while(this.vy === 0){
             this.vy = Math.floor(Math.random() * 6 - 3);
         }
-        this.vx = this.direction * (4 - Math.abs(this.vy));  
-            }
-        }));
+        this.vx = this.direction * (4 - Math.abs(this.vy)); 
+    }
+    });     
     }
 
     wallCollision() {
@@ -46,6 +45,7 @@ export default class Ball {
             player2.increaseScore();
             this.direction = this.direction * -1;
             this.reset();
+
         } else if (this.x >= this.boardWidth) {
             player1.increaseScore();
             this.direction = this.direction * -1;
@@ -62,8 +62,9 @@ export default class Ball {
                 this.y >= p2.top &&
                 this.y <= p2.bottom ) {
                     this.vx = this.vx * -1;
-                    this.ping2.play ();
-            
+                    this.ping2.play();
+                    this.color = "lightblue";
+        
                 }
         } else {
             const p1 = player1.getCoordinates();
@@ -73,7 +74,8 @@ export default class Ball {
                 this.y >= p1.top &&
                 this.y <= p1.bottom ) {
                     this.vx = this.vx * -1;
-                    this.ping.play ();
+                    this.ping.play();
+                    this.color = "lightpink";
         
         }
     }
@@ -82,7 +84,7 @@ export default class Ball {
 
     render(svg, player1, player2) {
         let circle = document.createElementNS(SVG_NS, 'circle');
-        circle.setAttributeNS(null, "fill", "lightpink");
+        circle.setAttributeNS(null, "fill", this.color);
         circle.setAttributeNS(null, "cx", this.x);
         circle.setAttributeNS(null, "cy", this.y);
         circle.setAttributeNS(null, "r", this.radius);
@@ -91,7 +93,6 @@ export default class Ball {
         this.wallCollision();
         this.paddleCollision(player1,player2);
         this.goalCollision(player1, player2);
-        // this.ball2.circle.setAttributeNS(null, "fill", "lightblue");
         svg.appendChild(circle);
         
     }

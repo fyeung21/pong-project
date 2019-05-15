@@ -1,5 +1,4 @@
 import {SVG_NS, SPEED} from '../settings';
-import { reject } from 'q';
 
 export default class Paddle {
     constructor(boardHeight, paddleWidth, paddleHeight, initialX, initialY, keyUp, keyDown) {

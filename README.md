@@ -1,41 +1,58 @@
-# Pong Game Starter
+# Pong Game
 
-A starter project for a basic pong game using SVGs.
+A basic pong game using SVGs with some twists.
+
+# Installation
 
 ## Setup
 
-Ensure you have [Node.js](https://nodejs.org/en/) installed first.
+1. Ensure you have [Node.js](https://nodejs.org/en/) installed first.
 
-**Install dependencies:**
+2. Clone this project
 
-`$ npm install`
+3. Open project folder in command line. 
 
-**Run locally with the Parcel dev server:**
+4. Run 'npm start'.
 
-`$ npm start`
+5. Access the project at http://localhost:3000.
 
-Once you run the start command you can access your project at http://localhost:3000.
+# Technologies
 
-Read more about the [Parcel web application bundler here](https://parceljs.org/).
+* JavaScript
 
-## Deploy
+* HTML5
 
-The deployment workflow for this project will be a bit different from what you've used when deploying simple static websites.
+* SVG
 
-To deploy your finished Pong project as a GitHub page, you must first **update the `predeploy` script in the `package.json` file with the name of your repo.**
+* Node.js
 
-For example, if your repo URL is:
+# Game Features
 
-https://github.com/bob/pong-project
+* Second Ball will trigger simultaneously when both players have 3 or more points
 
-Update the `predeploy` script as follows:
+* Ball changes colour when colliding with paddles
 
-```json
-"predeploy": "rm -rf dist && parcel build index.html --public-url /pong-project",
-```
+* Added a ball start key 'B'
 
-Once you have done this, you can run:
+* Game Over text appears and the game is stopped when either player reaches 6 points
 
-`$ npm run deploy`
+* Added Cat meows when ball collides with Paddles
 
-Now check out your deployed site 🙂
+# Personal Learnings
+
+* Began to familiarize with Object Oriented Programming using constructors and functions.
+
+* Learned how to connect multiple js files into one game.js
+
+* Learned how to utilize Node.js to start local servers.
+
+* SVGs are useful in building vector shapes.
+
+
+# Screenshot
+
+<img src='image/screenshot.png'> 
+
+# License
+
+This project is licensed under MIT 2019.

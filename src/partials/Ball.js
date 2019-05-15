@@ -1,7 +1,6 @@
 import {SVG_NS, keys} from '../settings';
-import audioFile from '../../public/sounds/meowp1.wav';
+import audioFile from '../../public/sounds/meowp1.mp3';
 import audioFile2 from '../../public/sounds/meowp2.wav';
-import { reject } from 'q';
 
 export default class Ball {
     constructor(boardWidth, boardHeight, radius, color) {
@@ -56,7 +55,6 @@ export default class Ball {
     paddleCollision(player1, player2) {
         if(this.vx > 0) {
             const p2 = player2.getCoordinates();
-            // check for hit with player2
             if(this.x + this.radius >= p2.left &&
                 this.x + this.radius <= p2.right && 
                 this.y >= p2.top &&
@@ -68,7 +66,6 @@ export default class Ball {
                 }
         } else {
             const p1 = player1.getCoordinates();
-            // check for hit with player1
             if(this.x - this.radius >= p1.left && 
                 this.x - this.radius <= p1.right &&
                 this.y >= p1.top &&

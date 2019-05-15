@@ -14,6 +14,7 @@ export default class Game {
     this.paused = false;
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width,this.height);
+    this.pausedBall = false;
 
     const boardMid = (this.height - paddleHeight)/2;
     this.paddle1 = new Paddle(this.height, paddleWidth, paddleHeight, boardGap, boardMid, keys.p1up, keys.p1down);
@@ -35,9 +36,6 @@ export default class Game {
         this.paused = !this.paused;
       }
 
-      // if(event.key === keys.begin) {
-      //   this.paused = !this.paused;
-      // }
     });
     
   }
@@ -65,11 +63,9 @@ export default class Game {
     this.score2.render(svg, this.paddle2.getScore());
 
     if (this.paddle1.getScore() >= 6 || this.paddle2.getScore() >= 6) {
-      this.pause = true;
+      this.paused = true;
       this.Endgame.render(svg);
     }
-
-    
 
   }
 

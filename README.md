@@ -1,5 +1,7 @@
 # Pong Game
 
+<img src='image/screenshot.png'> 
+
 A basic pong game using SVGs with some twists.
 
 # Installation
@@ -47,12 +49,3 @@ A basic pong game using SVGs with some twists.
 * Learned how to utilize Node.js to start local servers.
 
 * SVGs are useful in building vector shapes.
-
-
-# Screenshot
-
-<img src='image/screenshot.png'> 
-
-# License
-
-This project is licensed under MIT 2019.

@@ -1,5 +1,5 @@
 
-import {SVG_NS, paddleWidth, paddleHeight, boardGap, keys, radius, radius2} from '../settings';
+import {SVG_NS, PADDLE_WIDTH, PADDLE_HEIGHT, BOARD_GAP, KEYS, RADIUS, RADIUS2} from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';

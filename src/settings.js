@@ -1,15 +1,15 @@
 export const SVG_NS = "http://www.w3.org/2000/svg";
 
-export const paddleWidth = 8, 
-            paddleHeight = 56, 
-            boardGap = 10, 
+export const PADDLE_WIDTH = 8, 
+            PADDLE_HEIGHT = 56, 
+            BOARD_GAP = 10, 
             SPEED = 10,
-            radius = 8,
-            radius2 = 10,
-            text_size = 30;
+            RADIUS = 8,
+            RADIUS2 = 10,
+            TEXT_SIZE = 30;
             
 
-export const keys = {
+export const KEYS = {
     p1up:'w',
     p1down:'s',
     p2up:'ArrowUp',

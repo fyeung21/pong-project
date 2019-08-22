@@ -1,6 +1,6 @@
 import {SVG_NS, TEXT_SIZE} from '../settings';
 
-export default class Endgame {
+export default class endGame {
     constructor(xPosition, yPosition) {
         this.x = xPosition;
         this.y = yPosition;
@@ -12,7 +12,7 @@ export default class Endgame {
         text.setAttributeNS(null, "font-family", "'Silkscreen Web', monotype");
         text.setAttributeNS(null, "x", this.x);
         text.setAttributeNS(null, "y", this.y);
-        text.textContent = "Game Over";
+        text.textContent = "Winner!";
         svg.appendChild(text);
     }
 }

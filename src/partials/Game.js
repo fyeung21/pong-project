@@ -4,7 +4,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
-import Endgame from './Endgame';
+import endGame from './endGame';
 
 export default class Game {
   constructor(element, width, height) {
@@ -28,7 +28,8 @@ export default class Game {
     this.score1 = new Score(this.width / 2 - 50, 30);
     this.score2 = new Score(this.width / 2 + 25, 30);
 
-    this.Endgame = new Endgame(163, 220);
+    this.winnerP1 = new endGame(60, 220);
+    this.winnerP2 = new endGame(316, 220);
 
 
     document.addEventListener("keyup", (event) => {
@@ -40,10 +41,8 @@ export default class Game {
     document.addEventListener("keydown", (event) => {
       if (event.key === KEYS.begin) {
         this.begin = true;
-        console.log(this.begin);
       }
-    });
-    
+    });   
   }
 
   render() {
@@ -80,11 +79,13 @@ export default class Game {
       this.ball.render(svg, this.paddle1, this.paddle2);
     }
 
-    if (this.paddle1.getScore() >= 6 || this.paddle2.getScore() >= 6) {
+    if (this.paddle1.getScore() >= 6) {
       this.paused = true;
-      this.Endgame.render(svg);
+      this.winnerP1.render(svg);
     }
-
+    else if (this.paddle2.getScore() >= 6) {
+      this.paused = true;
+      this.winnerP2.render(svg);
+    };
   }
-
 }

@@ -88,6 +88,5 @@ export default class Ball {
         this.paddleCollision(player1, player2);
         this.goalCollision(player1, player2);
         svg.appendChild(circle);
-
     }
 }

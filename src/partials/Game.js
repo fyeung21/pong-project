@@ -1,5 +1,5 @@
 
-import {SVG_NS, PADDLE_WIDTH, PADDLE_HEIGHT, BOARD_GAP, KEYS, RADIUS, RADIUS2} from '../settings';
+import {SVG_NS, PADDLE_WIDTH, PADDLE_HEIGHT, BOARD_GAP, KEYS, RADIUS, RADIUS2, SPEED} from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
@@ -16,14 +16,14 @@ export default class Game {
     this.board = new Board(this.width,this.height);
     this.pausedBall = false;
 
-    const boardMid = (this.height - paddleHeight)/2;
-    this.paddle1 = new Paddle(this.height, paddleWidth, paddleHeight, boardGap, boardMid, keys.p1up, keys.p1down);
+    const boardMid = (this.height - PADDLE_HEIGHT)/2;
+    this.paddle1 = new Paddle(this.height, PADDLE_WIDTH, PADDLE_HEIGHT, BOARD_GAP, boardMid, KEYS.p1up, KEYS.p1down);
 
-    const paddle2Gap = this.width - boardGap - paddleWidth;
-    this.paddle2 = new Paddle(this.height, paddleWidth, paddleHeight, paddle2Gap, boardMid, keys.p2up, keys.p2down);
+    const paddle2Gap = this.width - BOARD_GAP - PADDLE_WIDTH;
+    this.paddle2 = new Paddle(this.height, PADDLE_WIDTH, PADDLE_HEIGHT, paddle2Gap, boardMid, KEYS.p2up, KEYS.p2down);
   
-    this.ball = new Ball(this.width, this.height, radius, "#FFF");
-    this.ball2 = new Ball(this.width, this.height, radius2, "#FFF");
+    this.ball = new Ball(this.width, this.height, RADIUS, "#FFF");
+    this.ball2 = new Ball(this.width, this.height, RADIUS2, "#FFF");
     
     this.score1 = new Score(this.width/2 - 50, 30);
     this.score2 = new Score(this.width/2 + 25, 30);
@@ -32,7 +32,7 @@ export default class Game {
 
     
     document.addEventListener("keydown", (event) => {
-      if(event.key === keys.pause) {
+      if(event.key === KEYS.pause) {
         this.paused = !this.paused;
       }
 
@@ -42,8 +42,14 @@ export default class Game {
 
   render() {
     if(this.paused) {
+      this.paddle1.speed = 0;
+      this.paddle2.speed = 0;
       return;
+    } else {
+      this.paddle1.speed = SPEED;
+      this.paddle2.speed = SPEED;
     }
+
 
     this.gameElement.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, 'svg');

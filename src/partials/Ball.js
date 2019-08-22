@@ -1,4 +1,4 @@
-import {SVG_NS, keys} from '../settings';
+import {SVG_NS, KEYS} from '../settings';
 import audioFile from '../../public/sounds/meowp1.mp3';
 import audioFile2 from '../../public/sounds/meowp2.wav';
 
@@ -20,7 +20,7 @@ export default class Ball {
         this.vx = 0;
         this.vy = 0;
         document.addEventListener('keydown', (event) => {
-            if(event.key === keys.begin){
+            if(event.key === KEYS.begin){
         
             while(this.vy === 0){
             this.vy = Math.floor(Math.random() * 6 - 3);

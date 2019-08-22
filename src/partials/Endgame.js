@@ -1,4 +1,4 @@
-import {SVG_NS, text_size} from '../settings';
+import {SVG_NS, TEXT_SIZE} from '../settings';
 
 export default class Endgame {
     constructor(xPosition, yPosition) {
@@ -8,7 +8,7 @@ export default class Endgame {
     render(svg) {
         let text = document.createElementNS(SVG_NS, 'text');
         text.setAttributeNS(null, "fill", "#FFF");
-        text.setAttributeNS(null, "font-size", text_size);
+        text.setAttributeNS(null, "font-size", TEXT_SIZE);
         text.setAttributeNS(null, "font-family", "'Silkscreen Web', monotype");
         text.setAttributeNS(null, "x", this.x);
         text.setAttributeNS(null, "y", this.y);

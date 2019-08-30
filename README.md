@@ -2,7 +2,7 @@
 
 <img src='image/screenshot.png'> 
 
-A basic pong game using SVGs with some twists.
+A basic Pong game using SVGs with some twists.
 
 # Installation
 
@@ -34,11 +34,11 @@ A basic pong game using SVGs with some twists.
 
 * Ball changes colour when colliding with paddles
 
-* Added a ball start key 'B'
+* Added start ball key 'B'
 
-* Game Over text appears and the game is stopped when either player reaches 6 points
+* Winner! text appears on the side that reaches 6 points and the game is stopped.
 
-* Added Cat meows when ball collides with Paddles
+* Added Cat meow sounds when ball collides with Paddles
 
 # Personal Learnings
 
